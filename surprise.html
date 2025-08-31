@@ -157,14 +157,13 @@
   </section>
 
   <!-- Video Section -->
-<section class="video-section">
-  <h2>🎥 A Special Video for You</h2>
-  <video id="videoPlayer" controls muted>
-    <source id="videoSource" src="https://drive.google.com/uc?export=download&id=1BrxPWNXgSfN_DHs60kt-OK2rmZj_pwBb" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <p id="videoStatus"></p>
-</section>
+  <section class="video-section">
+    <h2>🎥 A Special Video for You</h2>
+    <video id="videoPlayer" controls muted>
+      <source id="videoSource" src="videos/video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p id="videoStatus"></p>
 
     <!-- Playlist Thumbnails -->
     <div class="playlist" id="playlist"></div>
@@ -192,15 +191,16 @@
 
   <!-- Background Music -->
   <audio id="bg-music" autoplay loop>
-    <source src="https://drive.google.com/uc?export=download&id=1pbFDXJXjbzSqFZ1fWOZz8J8TFsNYZlh7" type="video/mp4">
+    <source src="music/song.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-  /* ✅ VIDEO PLAYLIST SYSTEM */
-  const videos = [
-    "https://drive.google.com/uc?export=download&id=1BrxPWNXgSfN_DHs60kt-OK2rmZj_pwBb",
-    "https://drive.google.com/uc?export=download&id=1gUR_i7s9fTd3MxC2kvpnOnww22HCrHTq"
-  ];
+    /* ✅ VIDEO PLAYLIST SYSTEM */
+    const videos = [
+      "videos/video1.mp4",
+      "videos/video2.mp4",
+    ];
+
     let currentVideo = 0;
     const videoPlayer = document.getElementById("videoPlayer");
     const videoSource = document.getElementById("videoSource");
