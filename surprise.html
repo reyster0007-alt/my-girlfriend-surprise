@@ -1,0 +1,283 @@
+<a href="message.html" class="back-button">⬅ Back to Message</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Love ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* General Page Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff0f5;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Greeting Section */
+    .hero {
+      padding: 20px;
+      background: #ffb6c1;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Video Section */
+    .video-section {
+      padding: 20px;
+    }
+
+    video {
+      width: 400px;
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #videoStatus {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ff4081;
+    }
+
+    /* Playlist Styling */
+    .playlist {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .playlist-item {
+      width: 120px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .playlist-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .playlist-item video {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      padding: 20px;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .gallery-container img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-container img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox Styling */
+    .lightbox {
+      display: none; /* ✅ Ensures it’s hidden by default */
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 35px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #ff4081;
+    }
+
+    /* Greeting at Bottom */
+    .bottom-greeting {
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff4081;
+    }
+  </style>
+</head>
+<body>
+  <!-- Greeting Section -->
+  <section class="hero">
+    <h1>Hi Love ❤️</h1>
+    <p>You are my world, my happiness, my everything 😘</p>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <h2>🎥 A Special Video for You</h2>
+    <video id="videoPlayer" controls muted>
+      <source id="videoSource" src="videos/video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p id="videoStatus"></p>
+
+    <!-- Playlist Thumbnails -->
+    <div class="playlist" id="playlist"></div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>📸 Our Beautiful Memories</h2>
+    <div class="gallery-container" id="gallery"></div>
+  </section>
+
+  <!-- Greeting at Bottom -->
+  <div class="bottom-greeting">
+    Hoping you appreciate this simple effort ❤️ No tampo na please 😘  
+    I love you so much, love! 💕
+   <br><br>
+    this is a lifetime website so please secure the link
+  </div>
+
+  <!-- Lightbox for Images -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn" id="closeLightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="Preview" />
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* ✅ VIDEO PLAYLIST SYSTEM */
+    const videos = [
+      "videos/video1.mp4",
+      "videos/video2.mp4",
+    ];
+
+    let currentVideo = 0;
+    const videoPlayer = document.getElementById("videoPlayer");
+    const videoSource = document.getElementById("videoSource");
+    const videoStatus = document.getElementById("videoStatus");
+    const playlist = document.getElementById("playlist");
+
+    // Ensure video starts muted
+    videoPlayer.muted = true;
+
+    // Autoplay next video
+    videoPlayer.addEventListener("ended", function () {
+      currentVideo++;
+      if (currentVideo < videos.length) {
+        videoSource.src = videos[currentVideo];
+        videoPlayer.load();
+        videoPlayer.play();
+        videoStatus.textContent = "💖 Playing next video...";
+      } else {
+        videoStatus.textContent = "🎉 That's all for now, my love ❤️";
+      }
+    });
+
+    // ✅ Create playlist thumbnails
+    videos.forEach((video, index) => {
+      const item = document.createElement("div");
+      item.classList.add("playlist-item");
+
+      const thumb = document.createElement("video");
+      thumb.src = video;
+      thumb.muted = true;
+      thumb.loop = true;
+      thumb.autoplay = true;
+
+      item.appendChild(thumb);
+      item.onclick = function() {
+        currentVideo = index;
+        videoSource.src = videos[currentVideo];
+        videoPlayer.load();
+        videoPlayer.play();
+        videoStatus.textContent = `🎥 Now playing video ${currentVideo + 1}`;
+      };
+
+      playlist.appendChild(item);
+    });
+
+    /* ✅ AUTO LOAD GALLERY IMAGES */
+    const totalImages = 144; // Change to your actual number of photos
+    const gallery = document.getElementById("gallery");
+
+    for (let i = 1; i <= totalImages; i++) {
+      const img = document.createElement("img");
+      img.src = `image/photo${i}.jpg`;
+      img.alt = `Memory ${i}`;
+      img.loading = "lazy";
+
+      // Hide broken images
+      img.onerror = () => img.style.display = "none";
+
+      // Open lightbox when clicking image
+      img.addEventListener("click", () => {
+        document.getElementById("lightboxImg").src = img.src;
+        document.getElementById("lightbox").style.display = "flex";
+      });
+
+      gallery.appendChild(img);
+    }
+
+    /* ✅ LIGHTBOX FUNCTIONALITY */
+    document.getElementById("closeLightbox").addEventListener("click", () => {
+      document.getElementById("lightbox").style.display = "none";
+    });
+
+    document.getElementById("lightbox").addEventListener("click", (e) => {
+      if (e.target === document.getElementById("lightbox")) {
+        document.getElementById("lightbox").style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

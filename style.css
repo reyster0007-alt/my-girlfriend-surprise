@@ -1,0 +1,188 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffeef4;
+  color: #333;
+  text-align: center;
+}
+
+/* Landing Page */
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffb6c1;
+}
+
+.container {
+  text-align: center;
+}
+
+button {
+  background-color: #ff69b4;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #ff4da6;
+}
+
+/* Hero Section */
+.hero {
+  padding: 40px;
+  background-color: #ffb6c1;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Video Section */
+.video-section {
+  margin: 30px 0;
+}
+
+.video-section video {
+  width: 80%;
+  max-width: 600px;
+  border: 5px solid #ff69b4;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Gallery Section */
+.gallery {
+  padding: 20px;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.gallery-item {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #ff69b4;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+/* Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup img {
+  max-width: 90%;
+  max-height: 80%;
+  border: 5px solid white;
+  border-radius: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+/* Message Page Styling */
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+}
+
+.message-container {
+  text-align: center;
+  max-width: 600px;
+  padding: 30px;
+  background-color: rgba(255, 182, 193, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.message-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.message-container p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.message-container button {
+  background-color: #ff69b4;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.message-container button:hover {
+  transform: scale(1.1);
+  background-color: #ff4da6;
+}
+.back-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #ff69b4;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  background-color: #ff4081;
+  transform: scale(1.05);
+}
